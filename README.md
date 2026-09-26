@@ -5,8 +5,7 @@
 **Point it at your MDM, get an audit report.**
 
 A native macOS app that connects to **Jamf Pro**, **Microsoft Intune** and **Iru** over their APIs and
-renders a polished, branded, self-contained HTML report — with optional PDF, DOCX and a written
-guidance document alongside.
+renders a polished, branded, self-contained HTML report — with an optional PDF or DOCX alongside.
 
 [**Download the latest release →**](https://github.com/MDMMagic/MDM-Reporting-Tool/releases/latest) · [Documentation](https://github.com/MDMMagic/MDM-Reporting-Tool/wiki) · [mdmmagic.au](https://mdmmagic.au)
 
@@ -27,7 +26,7 @@ Every API client is **read-only**. Nothing is ever written back to your MDM.
 1. Download the latest `.pkg` from [**Releases**](https://github.com/MDMMagic/MDM-Reporting-Tool/releases/latest).
 2. Double-click it and follow the installer.
 3. Launch **MDM Reporting Tool** from `/Applications`.
-4. Activate your licence on first launch.
+4. Every feature is unlocked for a **72-hour free trial**. Activate a licence any time to keep full access.
 
 The package is signed with a Developer ID certificate and notarised by Apple, so it installs without
 any Gatekeeper warnings. Requires **macOS 15.0 or later**.
@@ -59,13 +58,15 @@ document. Logo, colour theme, title and footer are yours.
 
 | | |
 |---|---|
-| **Three MDM platforms** | Jamf Pro (51 sections), Microsoft Intune via Graph (21 sections), Iru (15 sections) |
+| **Three MDM platforms** | Jamf Pro (65 sections), Microsoft Intune via Graph (23 sections), Iru (15 sections) |
 | **Export formats** | HTML, HTML + PDF, HTML + DOCX |
-| **Guidance document** | An optional companion `.docx` — Findings / Impact / Details / Recommendations per section |
+| **Security compliance** | Fleet-wide FileVault, Gatekeeper, SIP, firewall and other security settings, XProtect definitions compared with Apple's latest releases, and login banner / password hint checks |
 | **Security audit** | Jamf Compliance Benchmarks checked against the mSCP baselines your instance actually uses |
+| **App version check** | Installed app versions across your Macs compared with the latest on Homebrew, optionally limited to Macs with recent inventory |
 | **Scheduled agents** | Unattended runs delivered by email, Slack, Teams, or HTTP upload |
 | **Report diffing** | Compare two saved reports and see exactly what changed |
-| **Credential safety** | Everything sensitive lives in the macOS Keychain, with saved server profiles for quick reconnects |
+| **Credential safety** | Everything sensitive lives in the macOS Keychain, with saved server profiles for Jamf Pro, Intune and Iru |
+| **Read-only and local** | Never writes to your MDM. No vendor backend, no telemetry |
 | **Permission preflight** | Verifies all 19 required Jamf read privileges before a run starts |
 
 ## How it works
@@ -73,6 +74,9 @@ document. Logo, colour theme, title and footer are yours.
 Six steps, with a progress bar across the top and back-navigation at any point:
 
 **1 · MDM** → **2 · Authenticate** → **3 · Options** → **4 · Sections** → **5 · Generate** → **6 · Done**
+
+For Jamf Pro, two optional steps come after Sections: **Check Application Versions** and **Report
+Extras** (the security audit).
 
 The connection is tested before anything else happens, so a bad URL or an expired secret surfaces at
 step 2 rather than halfway through a run. Every section is opt-in. Reports are timestamped rather
@@ -98,19 +102,24 @@ The [**wiki**](https://github.com/MDMMagic/MDM-Reporting-Tool/wiki) covers every
 | | |
 |---|---|
 | [Getting Started](https://github.com/MDMMagic/MDM-Reporting-Tool/wiki/Getting-Started) | Install, deploy, and a walkthrough of the six-step workflow |
+| [Connecting to Jamf Pro](https://github.com/MDMMagic/MDM-Reporting-Tool/wiki/Connecting-to-Jamf-Pro), [Intune](https://github.com/MDMMagic/MDM-Reporting-Tool/wiki/Connecting-to-Microsoft-Intune), [Iru](https://github.com/MDMMagic/MDM-Reporting-Tool/wiki/Connecting-to-Iru) | Credentials, saved servers and required privileges |
 | [Report Sections](https://github.com/MDMMagic/MDM-Reporting-Tool/wiki/Report-Sections) | Everything each platform can report on |
 | [The HTML Report](https://github.com/MDMMagic/MDM-Reporting-Tool/wiki/The-HTML-Report) | What the report does, and the other output formats |
 | [Security Audit](https://github.com/MDMMagic/MDM-Reporting-Tool/wiki/Security-Audit) | The Jamf Compliance Benchmarks / mSCP pass |
+| [Application Version Check](https://github.com/MDMMagic/MDM-Reporting-Tool/wiki/Application-Version-Check) | Installed versions compared with Homebrew |
 | [Automated Reports](https://github.com/MDMMagic/MDM-Reporting-Tool/wiki/Automated-Reports) | Scheduled agents and delivery options |
 | [Comparing Reports](https://github.com/MDMMagic/MDM-Reporting-Tool/wiki/Comparing-Reports) | Diffing two reports |
 | [Preferences](https://github.com/MDMMagic/MDM-Reporting-Tool/wiki/Preferences) | Appearance, branding, save paths |
 | [Troubleshooting](https://github.com/MDMMagic/MDM-Reporting-Tool/wiki/Troubleshooting) | Diagnostics, debug mode, common failures |
-| [Licensing](https://github.com/MDMMagic/MDM-Reporting-Tool/wiki/Licensing) | Activation and deactivation |
+| [Licensing](https://github.com/MDMMagic/MDM-Reporting-Tool/wiki/Licensing) | The free trial, what works without a licence, activation |
+| [Security FAQ](https://github.com/MDMMagic/MDM-Reporting-Tool/wiki/Security-FAQ) | Answers for security teams approving the tool: TLS, storage, access |
 
 ## Licence
 
-The app is licence-gated. A licence unlocks all three platforms, every report section, PDF and DOCX
-export, webhook notifications and Keychain credential saving — see
+Every new install gets a **72-hour free trial** with everything unlocked. After that, Jamf Pro
+settings reports keep working without a licence. A licence unlocks all three platforms, every report
+section, the security audit and app version check, PDF and DOCX export, webhook notifications,
+scheduled agents and Keychain credential saving — see
 [Licensing](https://github.com/MDMMagic/MDM-Reporting-Tool/wiki/Licensing).
 
 ## Support
